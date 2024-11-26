@@ -3,7 +3,7 @@ export interface Usuario {
     nombre: string;
     correo: string;
     password?: string;
-    tipo: 'estudiante' | 'tutor';
+    tipo: 'estudiante' | 'tutor' | 'administrador';
     edad: number;
   }
   

@@ -8,7 +8,7 @@ import { Usuario } from './usuario'; // Asegúrate de que esta ruta esté correc
   providedIn: 'root'
 })
 export class AdministracionService {
-  private apiUrl = 'http://127.0.0.1:5000/usuarios'; // Ruta de la API donde se gestionan los usuarios
+  private apiUrl = 'http://127.0.0.1:5000/usuarios';
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +18,12 @@ export class AdministracionService {
       map(response => response.usuarios) // Extraer la lista de usuarios
     );
   }
+
+  //login
+  public login(credenciales: { correo: string; password: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, credenciales);
+  }  
+  
 
   // Agregar un nuevo usuario
 public agregarUsuario(usuario: Partial<Usuario>): Observable<any> {

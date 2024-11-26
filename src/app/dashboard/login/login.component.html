@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="relative max-w-md mx-auto p-6 bg-white shadow-lg rounded">
+  <!-- Botón Crear Cuenta -->
+  <a href="/agregar" class="absolute top-4 right-4">
+    <button
+      class="px-3 py-1 text-sm rounded text-white bg-blue-500 hover:bg-blue-600"
+    >
+      Crear Cuenta
+    </button>
+  </a>
+
+  <!-- Contenido del Login -->
+  <h2 class="text-xl font-semibold mb-4">Iniciar Sesión</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="mb-4">
+      <label for="correo" class="block">Correo</label>
+      <input
+        id="correo"
+        type="email"
+        formControlName="correo"
+        class="w-full p-2 border rounded"
+        [class.border-red-500]="isCampoInvalido('correo')"
+      />
+      <div *ngIf="isCampoInvalido('correo')" class="text-red-500 text-sm mt-1">
+        Ingresa un correo válido.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="password" class="block">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        class="w-full p-2 border rounded"
+        [class.border-red-500]="isCampoInvalido('password')"
+      />
+      <div *ngIf="isCampoInvalido('password')" class="text-red-500 text-sm mt-1">
+        La contraseña es obligatoria.
+      </div>
+    </div>
+
+    <a href="/login">
+      <button
+        class="w-full p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+      >
+        Iniciar Sesión
+      </button>
+    </a>
+  </form>
+</div>
