@@ -33,11 +33,18 @@ export default class LoginComponent {
         next: (response) => {
           if (response.exito) {
             alert('Login exitoso');
-            // Almacenar el usuario en el localStorage si es necesario
+            // Almacenar el usuario en el localStorage
             localStorage.setItem('usuario', JSON.stringify(response.usuario));
   
-            // Redirigir a la página principal
-            this.router.navigate(['/principal']);
+            // Verificar el tipo de usuario y redirigir
+            const usuario = response.usuario;
+            if (usuario.tipo === 'estudiante') {
+              this.router.navigate(['/principalestudiante']); // Redirigir a la pantalla principal de estudiante
+            } else if (usuario.tipo === 'administrador' || usuario.tipo === 'tutor') {
+              this.router.navigate(['/principalmaestro']); // Redirigir a la pantalla principal de maestro/administrador
+            } else {
+              alert('Tipo de usuario no reconocido');
+            }
           } else {
             alert(response.mensaje || 'Credenciales incorrectas');
           }
@@ -51,6 +58,7 @@ export default class LoginComponent {
       alert('Por favor, completa los campos correctamente.');
     }
   }
+  
   
 
   isCampoInvalido(campo: string): boolean {
