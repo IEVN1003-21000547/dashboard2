@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router'; // Importa Router para redireccionar
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import Chart from 'chart.js/auto';
+import { AdministracionService } from '../../servicio.service';
+import { Usuario } from '../../usuario';
 
 @Component({
   selector: 'app-graficar',
@@ -21,10 +23,15 @@ export default class GraficarComponent implements OnInit {
   formulario: FormGroup;
   grafico: Chart | undefined;
 
-  // Variable para almacenar el promedio de los datos
   promedio: number = 0;
+  estudiantes: Usuario[] = [];
+  estudianteSeleccionado: number | null = null;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private administracionService: AdministracionService
+  ) {
     this.formulario = this.fb.group({
       dato1: [0],
       dato2: [0],
@@ -32,13 +39,29 @@ export default class GraficarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.obtenerEstudiantes();
     this.formulario.valueChanges.subscribe(() => {
       this.actualizarGrafico();
       this.calcularPromedio();
     });
   }
 
-  // Método para calcular el promedio de los valores de Dato 1 y Dato 2
+  obtenerEstudiantes() {
+    this.administracionService.obtenerUsuarios().subscribe({
+      next: (usuarios) => {
+        this.estudiantes = usuarios.filter(user => user.tipo === 'estudiante');
+      },
+      error: (err) => console.error('Error al obtener estudiantes:', err),
+    });
+  }
+
+  seleccionarEstudiante() {
+    const estudiante = this.estudiantes.find(e => e.idUsuario === this.estudianteSeleccionado);
+    if (estudiante) {
+      alert(`Has seleccionado a ${estudiante.nombre}`);
+    }
+  }
+
   calcularPromedio() {
     const { dato1, dato2 } = this.formulario.value;
     this.promedio = (dato1 + dato2) / 2;
@@ -56,7 +79,7 @@ export default class GraficarComponent implements OnInit {
         datasets: [
           {
             label: 'Datos',
-            data: [datos.dato1, datos.dato2], // Valores de Dato 1 y Dato 2
+            data: [datos.dato1, datos.dato2],
             backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(255, 99, 132, 0.6)'],
           },
         ],
@@ -64,10 +87,13 @@ export default class GraficarComponent implements OnInit {
     });
   }
 
-  // Método para manejar el clic en el botón
   enviarCalificaciones() {
     if (confirm('¿Está seguro de enviar las calificaciones?')) {
-      this.router.navigate(['/principalmaestro']); // Redirige al componente principalmaestro
+      this.formulario.reset({
+        dato1: 0,
+        dato2: 0,
+      });
+      this.router.navigate(['/graficar']);
     }
   }
 }
