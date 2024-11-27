@@ -9,11 +9,12 @@ import { LecturaComponent } from './dashboard/lectura/lectura.component';
 import { EscrituraComponent } from './dashboard/escritura/escritura.component';
 import { PrincipalmaestroComponent } from './dashboard/principalmaestro/principalmaestro.component';
 import { PrincipalestudianteComponent } from './dashboard/principalestudiante/principalestudiante.component';
+import  GraficarComponent  from './dashboard/graficar/graficar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, LecturaComponent, EscrituraComponent,PrincipalComponent, PrincipalmaestroComponent, PrincipalestudianteComponent, AdministracionComponent, AgregarComponent, LoginComponent],
+  imports: [RouterOutlet, NavbarComponent, LecturaComponent, EscrituraComponent,PrincipalComponent, PrincipalmaestroComponent, PrincipalestudianteComponent, GraficarComponent,AdministracionComponent, AgregarComponent, LoginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

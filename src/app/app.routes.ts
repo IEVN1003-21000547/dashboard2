@@ -7,6 +7,7 @@ import { LecturaComponent } from './dashboard/lectura/lectura.component';
 import { EscrituraComponent } from './dashboard/escritura/escritura.component';
 import { PrincipalmaestroComponent } from './dashboard/principalmaestro/principalmaestro.component';
 import { PrincipalestudianteComponent } from './dashboard/principalestudiante/principalestudiante.component';
+import GraficarComponent from './dashboard/graficar/graficar.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/principal', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'lectura', component: LecturaComponent },
   { path: 'escritura', component: EscrituraComponent },
   { path: 'principalmaestro', component: PrincipalmaestroComponent },
-  { path: 'principalestudiante', component: PrincipalestudianteComponent}
+  { path: 'principalestudiante', component: PrincipalestudianteComponent},
+  { path: 'graficar', component: GraficarComponent},
 ];

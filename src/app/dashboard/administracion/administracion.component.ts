@@ -72,7 +72,10 @@ export default class AdministracionComponent implements OnInit {
     if (id !== undefined) {
       this.adminService.eliminarUsuario(id).subscribe(
         () => {
+          // Filtrar los usuarios eliminando el registro con el id especificado
           this.usuarios = this.usuarios.filter(usuario => usuario.idUsuario !== id);
+          // Aplicar el filtro activo y búsqueda para mantener la tabla sincronizada
+          this.aplicarFiltros();
         },
         (error) => {
           console.error('Error al eliminar usuario', error);
@@ -80,4 +83,22 @@ export default class AdministracionComponent implements OnInit {
       );
     }
   }
+  
+  // Nueva función para aplicar todos los filtros activos (búsqueda y tipo)
+  aplicarFiltros(): void {
+    const termino = this.terminoBusqueda.toLowerCase().trim();
+    if (this.filtroActivo === 'todos') {
+      this.usuariosFiltrados = this.usuarios.filter(usuario =>
+        usuario.nombre.toLowerCase().includes(termino) ||
+        usuario.correo.toLowerCase().includes(termino)
+      );
+    } else {
+      this.usuariosFiltrados = this.usuarios.filter(usuario =>
+        usuario.tipo === this.filtroActivo &&
+        (usuario.nombre.toLowerCase().includes(termino) ||
+         usuario.correo.toLowerCase().includes(termino))
+      );
+    }
+  }
+  
 }
