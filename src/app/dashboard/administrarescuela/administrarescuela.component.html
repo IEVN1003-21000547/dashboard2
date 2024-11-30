@@ -1,0 +1,158 @@
+<div class="p-4">
+    <h2 class="text-2xl font-bold mb-4">Administrar Escuelas</h2>
+  
+    <!-- Formulario para modificar -->
+    <div *ngIf="editando" class="bg-gray-100 p-4 mb-4 rounded shadow">
+        <h3 class="text-lg font-semibold mb-2">Editar Escuela</h3>
+        <form (ngSubmit)="guardarEscuela()">
+          <div class="mb-4">
+            <label for="nombre" class="block text-sm font-medium">Nombre</label>
+            <input
+              id="nombre"
+              [(ngModel)]="escuelaActual.Nombre"
+              name="nombre"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="direccion" class="block text-sm font-medium">Dirección</label>
+            <input
+              id="direccion"
+              [(ngModel)]="escuelaActual.Direccion"
+              name="direccion"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="correo" class="block text-sm font-medium">Correo</label>
+            <input
+              id="correo"
+              [(ngModel)]="escuelaActual.Correo"
+              name="correo"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="telefono" class="block text-sm font-medium">Teléfono</label>
+            <input
+              id="telefono"
+              [(ngModel)]="escuelaActual.Telefono"
+              name="telefono"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="numeroEscuela" class="block text-sm font-medium">Número de Escuela</label>
+            <input
+              id="numeroEscuela"
+              [(ngModel)]="escuelaActual.NumeroEscuela"
+              name="numeroEscuela"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="metodoPago" class="block text-sm font-medium">Método de Pago</label>
+            <select
+              id="metodoPago"
+              [(ngModel)]="escuelaActual.MetodoPago"
+              name="metodoPago"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            >
+              <option value="Efectivo">Efectivo</option>
+              <option value="Tarjeta">Tarjeta</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="cantidadLicencias" class="block text-sm font-medium">Cantidad de Licencias</label>
+            <input
+              id="cantidadLicencias"
+              [(ngModel)]="escuelaActual.CantidadLicencias"
+              name="cantidadLicencias"
+              type="number"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="fechaExpiracion" class="block text-sm font-medium">Fecha Expiración</label>
+            <select
+              id="fechaExpiracion"
+              [(ngModel)]="escuelaActual.FechaExpiracion"
+              name="fechaExpiracion"
+              class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            >
+              <option value="Mes">Mes</option>
+              <option value="Año">Año</option>
+            </select>
+          </div>
+          <div class="flex gap-4">
+            <button
+              type="submit"
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+      
+    <!-- Mostrar indicador de carga -->
+    <div *ngIf="cargando" class="text-center text-gray-600">Cargando...</div>
+  
+    <!-- Mostrar error -->
+    <div *ngIf="error" class="text-center text-red-600">{{ error }}</div>
+  
+    <!-- Tabla de escuelas -->
+    <table
+  *ngIf="!cargando && !error && escuelas.length > 0"
+  class="table-auto w-full border-collapse border border-gray-300"
+>
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border border-gray-300 px-4 py-2">ID</th>
+      <th class="border border-gray-300 px-4 py-2">Nombre</th>
+      <th class="border border-gray-300 px-4 py-2">Dirección</th>
+      <th class="border border-gray-300 px-4 py-2">Correo</th>
+      <th class="border border-gray-300 px-4 py-2">Teléfono</th>
+      <th class="border border-gray-300 px-4 py-2">Número Escuela</th>
+      <th class="border border-gray-300 px-4 py-2">Método de Pago</th>
+      <th class="border border-gray-300 px-4 py-2">Licencias</th>
+      <th class="border border-gray-300 px-4 py-2">Fecha Expiración</th>
+      <th class="border border-gray-300 px-4 py-2">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let escuela of escuelas" class="hover:bg-gray-100">
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.IdEscuela }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.Nombre }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.Direccion }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.Correo }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.Telefono }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.NumeroEscuela }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.MetodoPago }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.CantidadLicencias }}</td>
+      <td class="border border-gray-300 px-4 py-2">{{ escuela.FechaExpiracion }}</td>
+      <td class="border border-gray-300 px-4 py-2">
+        <button
+          class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+          (click)="editarEscuela(escuela)"
+        >
+          Editar
+        </button>
+        <button
+          class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+          (click)="eliminarEscuela(escuela.IdEscuela)"
+        >
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  
+    <!-- Mensaje si no hay escuelas -->
+    <div *ngIf="!cargando && escuelas.length === 0" class="text-center text-gray-600">
+      No hay escuelas registradas.
+    </div>
+  </div>
+  

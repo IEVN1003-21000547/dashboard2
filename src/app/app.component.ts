@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
-import AdministracionComponent from './dashboard/administracion/administracion.component';
-import AgregarComponent from './dashboard/agregar/agregar.component';
-import  LoginComponent  from './dashboard/login/login.component';
 import { PrincipalComponent } from './dashboard/principal/principal.component';
-import { LecturaComponent } from './dashboard/lectura/lectura.component';
-import { EscrituraComponent } from './dashboard/escritura/escritura.component';
-import { PrincipalmaestroComponent } from './dashboard/principalmaestro/principalmaestro.component';
-import { PrincipalestudianteComponent } from './dashboard/principalestudiante/principalestudiante.component';
-import  GraficarComponent  from './dashboard/graficar/graficar.component';
-import AgregarloginComponent from './dashboard/agregarlogin/agregarlogin.component';
+import  LoginComponent  from './dashboard/login/login.component';
+import AdministraralumnoComponent from './dashboard/administraralumno/administraralumno.component';
+import AdministrarpadresComponent from './dashboard/administrarpadres/administrarpadres.component';
+import  AdministrarescuelaComponent  from './dashboard/administrarescuela/administrarescuela.component';
+import AgregaralumnoComponent from './dashboard/agregaralumno/agregaralumno.component';
+import AdministraradminsComponent from './dashboard/administraradmins/administraradmins.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, LecturaComponent, EscrituraComponent,PrincipalComponent, PrincipalmaestroComponent, PrincipalestudianteComponent, GraficarComponent,AdministracionComponent, AgregarComponent, AgregarloginComponent, LoginComponent],
+  imports: [RouterOutlet, NavbarComponent,PrincipalComponent, LoginComponent, AdministraralumnoComponent, AdministrarescuelaComponent, AdministrarpadresComponent, AdministraradminsComponent,AgregaralumnoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

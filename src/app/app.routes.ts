@@ -1,25 +1,20 @@
 import { Routes } from '@angular/router';
-import  AdministracionComponent  from './dashboard/administracion/administracion.component';
-import  AgregarComponent  from './dashboard/agregar/agregar.component';
-import LoginComponent from './dashboard/login/login.component';
 import { PrincipalComponent } from './dashboard/principal/principal.component';
-import { LecturaComponent } from './dashboard/lectura/lectura.component';
-import { EscrituraComponent } from './dashboard/escritura/escritura.component';
-import { PrincipalmaestroComponent } from './dashboard/principalmaestro/principalmaestro.component';
-import { PrincipalestudianteComponent } from './dashboard/principalestudiante/principalestudiante.component';
-import GraficarComponent from './dashboard/graficar/graficar.component';
-import AgregarloginComponent from './dashboard/agregarlogin/agregarlogin.component';
+import  LoginComponent  from './dashboard/login/login.component';
+import AdministraralumnoComponent from './dashboard/administraralumno/administraralumno.component';
+import AdministrarEscuelaComponent from './dashboard/administrarescuela/administrarescuela.component';
+import AdministrarpadresComponent from './dashboard/administrarpadres/administrarpadres.component';
+import  AgregaralumnoComponent  from './dashboard/agregaralumno/agregaralumno.component';
+import AdministraradminsComponent from './dashboard/administraradmins/administraradmins.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/principal', pathMatch: 'full' },
-  { path: 'principal', component: PrincipalComponent},
-  { path: 'administracion', component: AdministracionComponent },
-  { path: 'agregar', component: AgregarComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'lectura', component: LecturaComponent },
-  { path: 'escritura', component: EscrituraComponent },
-  { path: 'principalmaestro', component: PrincipalmaestroComponent },
-  { path: 'principalestudiante', component: PrincipalestudianteComponent},
-  { path: 'graficar', component: GraficarComponent},
-  { path: 'agregarlogin', component: AgregarloginComponent},
+  { path: 'principal' , component: PrincipalComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'administraralumno', component: AdministraralumnoComponent},
+  { path: 'administrarescuela', component: AdministrarEscuelaComponent},
+  { path: 'administrarpadres', component: AdministrarpadresComponent},
+  { path: 'agregaralumno', component: AgregaralumnoComponent},
+  { path: 'administraradmins', component: AdministraradminsComponent},
+  // { path: '', component: },
 ];

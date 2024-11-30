@@ -1,48 +1,37 @@
-<div class="relative max-w-md mx-auto p-6 bg-white shadow-lg rounded">
-  <!-- Botón Crear Cuenta -->
-  <a href="/agregarlogin" class="absolute top-4 right-4">
-    <button
-      class="px-3 py-1 text-sm rounded text-white bg-blue-500 hover:bg-blue-600"
-    >
-      Crear Cuenta
-    </button>
-  </a>
-
-  <!-- Contenido del Login -->
-  <h2 class="text-xl font-semibold mb-4">Iniciar Sesión</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+<div class="flex items-center justify-center h-screen bg-gray-100">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="bg-white p-8 rounded shadow-md w-96">
+    <h2 class="text-2xl font-bold mb-4">Iniciar Sesión</h2>
+    
     <div class="mb-4">
-      <label for="correo" class="block">Correo</label>
-      <input
-        id="correo"
-        type="email"
-        formControlName="correo"
+      <label for="Correo" class="block text-sm font-medium">Correo</label>
+      <input 
+        id="Correo" 
+        type="email" 
+        formControlName="Correo"
         class="w-full p-2 border rounded"
-        [class.border-red-500]="isCampoInvalido('correo')"
+        [ngClass]="{'border-red-500': loginForm.get('Correo')?.invalid && loginForm.get('Correo')?.touched}"
       />
-      <div *ngIf="isCampoInvalido('correo')" class="text-red-500 text-sm mt-1">
-        Ingresa un correo válido.
-      </div>
     </div>
-
+    
     <div class="mb-4">
-      <label for="password" class="block">Contraseña</label>
-      <input
-        id="password"
-        type="password"
-        formControlName="password"
+      <label for="Contrasena" class="block text-sm font-medium">Contraseña</label>
+      <input 
+        id="Contrasena" 
+        type="password" 
+        formControlName="Contrasena"
         class="w-full p-2 border rounded"
-        [class.border-red-500]="isCampoInvalido('password')"
+        [ngClass]="{'border-red-500': loginForm.get('Contrasena')?.invalid && loginForm.get('Contrasena')?.touched}"
       />
-      <div *ngIf="isCampoInvalido('password')" class="text-red-500 text-sm mt-1">
-        La contraseña es obligatoria.
-      </div>
     </div>
-
-    <button
-      class="w-full p-2 rounded text-white bg-blue-500 hover:bg-blue-600"
+    
+    <button 
+      type="submit" 
+      class="bg-blue-500 text-white px-4 py-2 rounded w-full"
+      [disabled]="loginForm.invalid"
     >
       Iniciar Sesión
     </button>
+    
+    <p class="text-red-500 text-sm mt-2" *ngIf="errorMessage">{{ errorMessage }}</p>
   </form>
 </div>

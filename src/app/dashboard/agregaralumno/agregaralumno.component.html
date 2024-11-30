@@ -1,0 +1,68 @@
+<div class="p-6 max-w-md mx-auto bg-white shadow-md rounded-lg">
+  <h2 class="text-lg font-bold mb-4">Agregar Alumno</h2>
+  <form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="Matricula" class="block font-medium">Matrícula</label>
+      <input
+        id="Matricula"
+        formControlName="Matricula"
+        type="text"
+        class="w-full border rounded p-2"
+        placeholder="Ingresa la matrícula"
+      />
+      <div *ngIf="alumnoForm.get('Matricula')?.invalid && alumnoForm.get('Matricula')?.touched" class="text-red-500">
+        Matrícula es requerida.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="Nombre" class="block font-medium">Nombre</label>
+      <input
+        id="Nombre"
+        formControlName="Nombre"
+        type="text"
+        class="w-full border rounded p-2"
+        placeholder="Ingresa el nombre"
+      />
+      <div *ngIf="alumnoForm.get('Nombre')?.invalid && alumnoForm.get('Nombre')?.touched" class="text-red-500">
+        Nombre es requerido.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="Escuela" class="block font-medium">Escuela</label>
+      <input
+        id="Escuela"
+        formControlName="Escuela"
+        type="text"
+        class="w-full border rounded p-2"
+        placeholder="Ingresa la escuela"
+      />
+      <div *ngIf="alumnoForm.get('Escuela')?.invalid && alumnoForm.get('Escuela')?.touched" class="text-red-500">
+        Escuela es requerida.
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="Contacto" class="block font-medium">Contacto</label>
+      <input
+        id="Contacto"
+        formControlName="Contacto"
+        type="text"
+        class="w-full border rounded p-2"
+        placeholder="Ingresa el contacto"
+      />
+      <div *ngIf="alumnoForm.get('Contacto')?.invalid && alumnoForm.get('Contacto')?.touched" class="text-red-500">
+        Contacto debe ser un número de 10 dígitos.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      [disabled]="alumnoForm.invalid"
+    >
+      Agregar Alumno
+    </button>
+  </form>
+</div>

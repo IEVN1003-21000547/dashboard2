@@ -1,69 +1,55 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { AdministracionService } from '../../servicio.service';
-import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { CommonModule } from '@angular/common'; // Para *ngIf
+import { NgClass } from '@angular/common'; // Para [ngClass]
+import { AdministracionService } from '../../servicio.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
+  imports: [ReactiveFormsModule, CommonModule, NgClass], // Agrega los módulos necesarios
   templateUrl: './login.component.html',
-  styles: []
+  styles: ``,
 })
 export default class LoginComponent {
   loginForm: FormGroup;
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
-    private adminService: AdministracionService,
-    private router: Router
+    private router: Router,
+    private administracionService: AdministracionService
   ) {
     this.loginForm = this.fb.group({
-      correo: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      Correo: ['', [Validators.required, Validators.email]],
+      Contrasena: ['', [Validators.required, Validators.minLength(6)]], // Actualizado
     });
   }
 
   onLogin() {
-    if (this.loginForm.valid) {
-      const credenciales = this.loginForm.value;
-  
-      this.adminService.login(credenciales).subscribe({
-        next: (response) => {
-          if (response.exito) {
-            alert('Login exitoso');
-            // Almacenar el usuario en el localStorage
-            localStorage.setItem('usuario', JSON.stringify(response.usuario));
-  
-            // Verificar el tipo de usuario y redirigir
-            const usuario = response.usuario;
-            if (usuario.tipo === 'estudiante') {
-              this.router.navigate(['/principalestudiante']); // Redirigir a la pantalla principal de estudiante
-            } else if (usuario.tipo === 'administrador' || usuario.tipo === 'tutor') {
-              this.router.navigate(['/principalmaestro']); // Redirigir a la pantalla principal de maestro/administrador
-            } else {
-              alert('Tipo de usuario no reconocido');
-            }
-          } else {
-            alert(response.mensaje || 'Credenciales incorrectas');
-          }
-        },
-        error: (err) => {
-          console.error('Error en login:', err);
-          alert('Error al intentar iniciar sesión.');
-        }
-      });
-    } else {
-      alert('Por favor, completa los campos correctamente.');
+    if (this.loginForm.invalid) {
+      this.errorMessage = 'Por favor, llena todos los campos correctamente.';
+      return;
     }
-  }
-  
-  
 
-  isCampoInvalido(campo: string): boolean {
-    const control = this.loginForm.get(campo);
-    return control ? control.invalid && (control.dirty || control.touched) : false;
+    const credenciales = this.loginForm.value;
+
+    this.administracionService.loginAdministrador(credenciales).subscribe({
+      next: (response) => {
+        if (response.exito) {
+          // Mostrar alert para inicio de sesión exitoso
+          alert('Inicio de sesión exitoso');
+          
+          // Redirigir a la ruta principal
+          this.router.navigate(['/principal']); // Ruta al componente principal.
+        } else {
+          this.errorMessage = response.mensaje || 'Credenciales incorrectas.';
+        }
+      },
+      error: () => {
+        this.errorMessage = 'Ocurrió un error al intentar iniciar sesión.';
+      },
+    });
   }
 }

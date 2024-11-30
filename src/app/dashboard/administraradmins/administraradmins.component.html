@@ -1,0 +1,106 @@
+<div class="p-4">
+    <h2 class="text-2xl font-bold mb-4">Administrar Administradores</h2>
+  
+    <!-- Formulario para modificar -->
+    <div *ngIf="editando" class="bg-gray-100 p-4 mb-4 rounded shadow">
+      <h3 class="text-lg font-semibold mb-2">Editar Administrador</h3>
+      <form (ngSubmit)="guardarAdministrador()">
+        <div class="mb-4">
+          <label for="id" class="block text-sm font-medium">ID</label>
+          <input
+            id="id"
+            [(ngModel)]="administradorActual.IdAdministrador"
+            name="id"
+            class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+            disabled
+          />
+        </div>
+        <div class="mb-4">
+          <label for="nombre" class="block text-sm font-medium">Nombre</label>
+          <input
+            id="nombre"
+            [(ngModel)]="administradorActual.Nombre"
+            name="nombre"
+            class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="correo" class="block text-sm font-medium">Correo</label>
+          <input
+            id="correo"
+            [(ngModel)]="administradorActual.Correo"
+            name="correo"
+            class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+          />
+        </div>
+        <div class="mb-4">
+          <label for="contrasena" class="block text-sm font-medium">Contraseña</label>
+          <input
+            id="contrasena"
+            [(ngModel)]="administradorActual.Contrasena"
+            name="contrasena"
+            type="password"
+            class="mt-1 block w-full border border-gray-300 rounded py-2 px-3"
+          />
+        </div>
+        <div class="flex gap-4">
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Mostrar indicador de carga -->
+    <div *ngIf="cargando" class="text-center text-gray-600">Cargando...</div>
+  
+    <!-- Mostrar error -->
+    <div *ngIf="error" class="text-center text-red-600">{{ error }}</div>
+  
+    <!-- Tabla de administradores -->
+    <table
+      *ngIf="!cargando && !error && administradores.length > 0"
+      class="table-auto w-full border-collapse border border-gray-300"
+    >
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-300 px-4 py-2">ID</th>
+          <th class="border border-gray-300 px-4 py-2">Nombre</th>
+          <th class="border border-gray-300 px-4 py-2">Correo</th>
+          <th class="border border-gray-300 px-4 py-2">Contraseña</th>
+          <th class="border border-gray-300 px-4 py-2">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let admin of administradores" class="hover:bg-gray-100">
+          <td class="border border-gray-300 px-4 py-2">{{ admin.IdAdministrador }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ admin.Nombre }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ admin.Correo }}</td>
+          <td class="border border-gray-300 px-4 py-2">{{ admin.Contrasena }}</td>
+          <td class="border border-gray-300 px-4 py-2">
+            <button
+              class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+              (click)="editarAdministrador(admin)"
+            >
+              Editar
+            </button>
+            <button
+              class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-2"
+              (click)="eliminarAdministrador(admin.IdAdministrador!)"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Mensaje si no hay administradores -->
+    <div *ngIf="!cargando && administradores.length === 0" class="text-center text-gray-600">
+      No hay administradores registrados.
+    </div>
+  </div>
+  
