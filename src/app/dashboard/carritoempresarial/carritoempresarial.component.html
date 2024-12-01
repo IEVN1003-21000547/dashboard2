@@ -1,0 +1,69 @@
+<div class="container mx-auto p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-semibold text-gray-800">Plan Empresarial</h2>
+  </div>
+
+  <div class="flex justify-end">
+    <!-- Agregamos ml-auto para mover el formulario más a la derecha -->
+    <div class="ml-auto w-full md:w-2/3 lg:w-2/3 p-4 bg-white shadow-md rounded-lg">
+      <form [formGroup]="escuelaForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Parte superior del formulario -->
+          <div class="mb-4">
+            <label for="Nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+            <input id="Nombre" formControlName="Nombre" type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          </div>
+
+          <div class="mb-4">
+            <label for="Direccion" class="block text-sm font-medium text-gray-700">Dirección</label>
+            <input id="Direccion" formControlName="Direccion" type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          </div>
+
+          <div class="mb-4">
+            <label for="Correo" class="block text-sm font-medium text-gray-700">Correo</label>
+            <input id="Correo" formControlName="Correo" type="email" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          </div>
+
+          <div class="mb-4">
+            <label for="Telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
+            <input id="Telefono" formControlName="Telefono" type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          </div>
+
+          <div class="mb-4">
+            <label for="NumeroEscuela" class="block text-sm font-medium text-gray-700">Número de Escuela</label>
+            <input id="NumeroEscuela" formControlName="NumeroEscuela" type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          </div>
+
+          <!-- Parte inferior del formulario (sección con las opciones extra) -->
+          <div class="mb-4">
+            <label for="MetodoPago" class="block text-sm font-medium text-gray-700">Método de Pago</label>
+            <select id="MetodoPago" formControlName="MetodoPago" class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+              <option value="Efectivo">Efectivo</option>
+              <option value="Tarjeta">Tarjeta</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label for="CantidadLicencias" class="block text-sm font-medium text-gray-700">Cantidad de Licencias</label>
+            <input id="CantidadLicencias" formControlName="CantidadLicencias" type="number" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          </div>
+
+          <div class="mb-4">
+            <label for="FechaExpiracion" class="block text-sm font-medium text-gray-700">Fecha de Expiración</label>
+            <select id="FechaExpiracion" formControlName="FechaExpiracion" class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+              <option value="Mes">Mes</option>
+              <option value="Año">Año</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Botón de Envío -->
+        <div class="flex justify-end">
+          <button type="submit" [disabled]="escuelaForm.invalid" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 disabled:bg-gray-300">
+            Agregar Escuela
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

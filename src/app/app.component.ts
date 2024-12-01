@@ -8,11 +8,16 @@ import AdministrarpadresComponent from './dashboard/administrarpadres/administra
 import  AdministrarescuelaComponent  from './dashboard/administrarescuela/administrarescuela.component';
 import AgregaralumnoComponent from './dashboard/agregaralumno/agregaralumno.component';
 import AdministraradminsComponent from './dashboard/administraradmins/administraradmins.component';
+import CarritoindividualComponent from './dashboard/carritoindividual/carritoindividual.component';
+import CarritoempresarialComponent from './dashboard/carritoempresarial/carritoempresarial.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent,PrincipalComponent, LoginComponent, AdministraralumnoComponent, AdministrarescuelaComponent, AdministrarpadresComponent, AdministraradminsComponent,AgregaralumnoComponent],
+  imports: [RouterOutlet, NavbarComponent,PrincipalComponent, LoginComponent, 
+    AdministraralumnoComponent, AdministrarescuelaComponent, AdministrarpadresComponent, 
+    AdministraradminsComponent,AgregaralumnoComponent, CarritoindividualComponent, 
+    CarritoempresarialComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
