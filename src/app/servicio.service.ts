@@ -101,4 +101,6 @@ export class AdministracionService {
   public eliminarPadre(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/padres/${id}`);
   }
+
+  
 }

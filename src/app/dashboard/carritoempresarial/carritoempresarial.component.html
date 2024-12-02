@@ -36,7 +36,7 @@
           </div>
 
           <div class="mb-4">
-            <label for="NumeroEscuela" class="block text-sm font-medium text-gray-700">Número de Escuela</label>
+            <label for="NumeroEscuela" class="block text-sm font-medium text-gray-700">CCT</label>
             <input id="NumeroEscuela" formControlName="NumeroEscuela" type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
           </div>
 
@@ -51,7 +51,11 @@
 
           <div class="mb-4">
             <label for="CantidadLicencias" class="block text-sm font-medium text-gray-700">Cantidad de Licencias</label>
-            <input id="CantidadLicencias" formControlName="CantidadLicencias" type="number" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+            <select id="CantidadLicencias" formControlName="CantidadLicencias" class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+              <option value="10">10</option>
+              <option value="30">30</option>
+              <option value="50">50</option>
+            </select>
           </div>
 
           <div class="mb-4">
@@ -113,6 +117,8 @@
     <div class="bg-white p-6 rounded-lg shadow-lg text-center" (click)="$event.stopPropagation()">
       <h3 class="text-xl font-semibold text-green-600">Pago realizado con éxito</h3>
       <p class="mt-2 text-gray-700">¡Tu pago ha sido procesado correctamente!</p>
+      <p class="mt-2 text-gray-700">Descarga la app aquí</p>
+      <p class="mt-2 text-gray-700"></p>
       <button (click)="cerrarModal()" class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">
         Cerrar
       </button>

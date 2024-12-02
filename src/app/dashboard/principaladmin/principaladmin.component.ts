@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './principaladmin.component.html',
   styles: ``
 })
-export class PrincipaladminComponent {
+export default class PrincipaladminComponent {
 
 }

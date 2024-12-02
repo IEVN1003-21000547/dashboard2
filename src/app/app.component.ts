@@ -10,14 +10,17 @@ import AgregaralumnoComponent from './dashboard/agregaralumno/agregaralumno.comp
 import AdministraradminsComponent from './dashboard/administraradmins/administraradmins.component';
 import CarritoindividualComponent from './dashboard/carritoindividual/carritoindividual.component';
 import CarritoempresarialComponent from './dashboard/carritoempresarial/carritoempresarial.component';
+import YapagasteComponent from './dashboard/yapagaste/yapagaste.component';
+import GraficasComponent  from './dashboard/graficas/graficas.component';
+import PrincipaladminComponent from './dashboard/principaladmin/principaladmin.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent,PrincipalComponent, LoginComponent, 
+  imports: [RouterOutlet, NavbarComponent,PrincipalComponent,LoginComponent, 
     AdministraralumnoComponent, AdministrarescuelaComponent, AdministrarpadresComponent, 
     AdministraradminsComponent,AgregaralumnoComponent, CarritoindividualComponent, 
-    CarritoempresarialComponent],
+    CarritoempresarialComponent, YapagasteComponent, GraficasComponent, PrincipaladminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

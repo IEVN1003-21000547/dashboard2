@@ -31,7 +31,7 @@ export default class CarritoempresarialComponent implements OnInit {
       Telefono: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       NumeroEscuela: ['', [Validators.required]],
       MetodoPago: ['Efectivo', [Validators.required]],
-      CantidadLicencias: ['', [Validators.required, Validators.min(1)]],
+      CantidadLicencias: ['', [Validators.required, Validators.pattern(/^(10|30|50)$/)]], // Validar que sea 10, 30 o 50
       FechaExpiracion: ['Mes', [Validators.required]],
       NumeroTarjeta: ['', []], 
       CVC: ['', []],
@@ -48,14 +48,31 @@ export default class CarritoempresarialComponent implements OnInit {
   onSubmit(): void {
     if (this.escuelaForm.valid) {
       const nuevaEscuela: Escuela = this.escuelaForm.value;
-
-      this.adminService.agregarEscuela(nuevaEscuela).subscribe({
+  
+      // Verificar si la escuela ya existe en la base de datos
+      this.adminService.obtenerEscuelas().pipe(
+        switchMap((escuelas) => {
+          const escuelaExistente = escuelas.find(
+            (e) => e.Nombre === nuevaEscuela.Nombre && e.Correo === nuevaEscuela.Correo
+          );
+  
+          if (escuelaExistente) {
+            // Si la escuela existe, sumar la cantidad de licencias
+            const licenciasActualizadas = escuelaExistente.CantidadLicencias + nuevaEscuela.CantidadLicencias;
+            const escuelaActualizada = { ...escuelaExistente, CantidadLicencias: licenciasActualizadas };
+  
+            return this.adminService.actualizarEscuela(escuelaExistente.IdEscuela!, escuelaActualizada);
+          } else {
+            return this.adminService.agregarEscuela(nuevaEscuela);
+          }
+        })
+      ).subscribe({
         next: (res) => {
-          this.pagoExitoso = true;  // Activar el modal de éxito
+          this.pagoExitoso = true;
           this.escuelaForm.reset();
         },
         error: (err) => {
-          alert('Hubo un error al agregar la escuela');
+          alert('Hubo un error al procesar la solicitud.');
           console.error(err);
         },
       });
@@ -63,4 +80,5 @@ export default class CarritoempresarialComponent implements OnInit {
       alert('Por favor, llena todos los campos correctamente.');
     }
   }
+  
 }

@@ -5,11 +5,12 @@ import { AdministracionService } from '../../servicio.service';
 import { Alumno } from '../../usuario';
 import { Escuela } from '../../usuario';
 import { Padre } from '../../usuario';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-agregaralumno',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NavbarComponent],
   templateUrl: './agregaralumno.component.html',
   styles: ``,
 })

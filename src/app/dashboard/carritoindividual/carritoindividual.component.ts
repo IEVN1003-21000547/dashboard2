@@ -33,14 +33,10 @@ export default class CarritoindividualComponent implements OnInit {
 
   onSubmit(): void {
     if (this.padreForm.valid) {
-      const nuevoPadre: Padre = this.padreForm.value;  // Usamos la interfaz Padre
+      const nuevoPadre: Padre = this.padreForm.value; // Usamos la interfaz Padre
       this.adminService.agregarPadre(nuevoPadre).subscribe({
-        next: (res) => {
-          this.pagoExitoso = true;  // Mostrar modal de éxito
-          setTimeout(() => {
-            this.pagoExitoso = false;  // Cerrar el modal después de 3 segundos
-            this.padreForm.reset();  // Reseteamos el formulario después de enviar
-          }, 3000);
+        next: () => {
+          this.pagoExitoso = true; // Mostrar modal de éxito
         },
         error: (err) => {
           alert('Hubo un error al agregar al padre');
@@ -51,8 +47,10 @@ export default class CarritoindividualComponent implements OnInit {
       alert('Por favor, llena todos los campos correctamente.');
     }
   }
-
-  cerrarModal() {
-    this.pagoExitoso = false;
+  
+  cerrarModal(): void {
+    this.pagoExitoso = false; // Cerrar el modal
+    this.padreForm.reset(); // Resetear el formulario
   }
+  
 }

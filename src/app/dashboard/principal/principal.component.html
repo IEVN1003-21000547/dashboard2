@@ -1,78 +1,124 @@
-<div class="min-h-screen flex flex-col bg-cover bg-center" style="background-image: url('tu-imagen-de-fondo.jpg');">
-  <!-- Header -->
-  <header class="bg-purple-600 text-white py-6 px-6">
-    <h1 class="text-4xl font-bold">Circuit</h1>
-    <p class="text-xl mt-2">Aprendes mientras juegas</p>
-  </header>
-
-  <!-- Section 1: Introducción -->
-  <section class="py-16 px-6" style="background: linear-gradient(to bottom, #E8DAEF, #D6EAF8);">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-purple-600 mb-6">¿Por qué elegir Circuit?</h2>
-      <p class="text-gray-700 text-lg mb-4">
-        Circuit utiliza el método Montessori para fomentar habilidades de lectura y escritura
-        en los niños, combinando aprendizaje interactivo con actividades divertidas.
-      </p>
-      <p class="text-gray-700 text-lg">
-        Diseñada para que los niños aprendan jugando, nuestra app mejora la confianza y 
-        habilidades esenciales de forma natural y entretenida.
-      </p>
-    </div>
-  </section>
-
-  <!-- Section 2: Características -->
-  <section class="py-16 px-6" style="background: linear-gradient(to bottom, #D6EAF8, #D5F5E3);">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-purple-600 mb-6">Características Destacadas</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="p-4 border rounded-lg shadow-lg bg-white">
-          <h3 class="text-lg font-bold text-blue-600 mb-2">Método Montessori</h3>
-          <p class="text-gray-700">Actividades basadas en el reconocido enfoque Montessori.</p>
-        </div>
-        <div class="p-4 border rounded-lg shadow-lg bg-white">
-          <h3 class="text-lg font-bold text-green-600 mb-2">Progreso Personalizado</h3>
-          <p class="text-gray-700">Seguimiento del aprendizaje adaptado al ritmo de cada niño.</p>
-        </div>
-        <div class="p-4 border rounded-lg shadow-lg bg-white">
-          <h3 class="text-lg font-bold text-yellow-600 mb-2">Multidispositivo</h3>
-          <p class="text-gray-700">Disponible en tablets, teléfonos y computadoras.</p>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circuit - Aprende Jugando</title>
+    <link rel="stylesheet" href="./principal.component.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">
+        <h1>Circuit</h1>
       </div>
+      <nav>
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#features">Características</a></li>
+          <li><a href="#plans">Planes</a></li>
+          <li><a href="/login">LogIn</a></li>
+        </ul>
+      </nav>
     </div>
-  </section>
 
-  <!-- Section 3: Planes -->
-  <section class="py-16 px-6" style="background: linear-gradient(to bottom, #D5F5E3, #FDEBD0);">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-purple-600 mb-6">Elige tu Plan</h2>
-
-      <div class="flex flex-col sm:flex-row justify-around gap-8">
-        <!-- Plan Individual -->
-        <div class="border p-6 rounded-lg shadow-lg bg-white">
-          <h3 class="text-xl font-bold text-blue-600 mb-4">Plan Individual</h3>
-          <ul class="text-gray-600 text-sm text-left mb-4">
-            <li>✔ Plan único para una persona</li>
-            <li>✔ Soporte técnico</li>
-          </ul>
-          <div class="flex justify-center space-x-4">
-            <a href="/carritoindividual" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Mensual</a>
-            <a href="/carritoindividual" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Anual</a>
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section id="hero" class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h2>¡Aprender nunca fue tan divertido!</h2>
+            <p>
+              Con Circuit, leer y escribir es una aventura llena de diversión y
+              aprendizaje.
+            </p>
+          </div>
+          <div class="hero-image">
           </div>
         </div>
+      </section>
 
-        <!-- Plan Empresarial -->
-        <div class="border p-6 rounded-lg shadow-lg bg-white">
-          <h3 class="text-xl font-bold text-green-600 mb-4">Plan Empresarial</h3>
-          <ul class="text-gray-600 text-sm text-left mb-4">
-            <li>✔ Acceso multiusuario</li>
-            <li>✔ Soporte técnico dedicado</li>
-          </ul>
-          <div class="flex justify-center space-x-4">
-            <a href="/carritoempresarial" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Mensual</a>
-            <a href="/carritoempresarial" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Anual</a>
+      <!-- Features Section -->
+      <section id="features" class="features">
+        <h2>Características Destacadas</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <i class="fas fa-chalkboard-teacher fa-3x feature-icon"></i>
+            <h3>Metodología Montessori</h3>
+            <p>
+              Actividades diseñadas para fomentar un aprendizaje interactivo y
+              autónomo.
+            </p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-gamepad fa-3x feature-icon"></i>
+            <h3>Juegos Interactivos</h3>
+            <p>Juegos y dinámicas educativas que enseñan mientras divierten.</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-user-clock fa-3x feature-icon"></i>
+            <h3>Progreso Personalizado</h3>
+            <p>
+              Avanza a tu propio ritmo con actividades ajustadas a tu nivel.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Plans Section -->
+      <section id="plans" class="plans">
+        <h2>Nuestros Planes</h2>
+        <div class="plans-grid">
+          <div class="plan">
+            <i class="fas fa-star fa-3x plan-icon"></i>
+            <h3>Plan Individual</h3>
+            <p>✔ Plan único para una persona</p>
+            <p>✔ Soporte técnico</p>
+            <p>✔ Puedes contratar este plan por pesos $199 al mes</p>
+            <p>✔ Puedes contratar este plan por pesos $2100 al año</p>
+            <a href="carritoindividual">
+              <button class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400">
+                ¡Contratar Plan HOY!
+              </button>
+            </a>
+            
+            
+          </div>
+          <div class="plan">
+            <i class="fas fa-crown fa-3x plan-icon"></i>
+            <h3>Plan Empresarial</h3>
+            <p>✔ Acesso multiusuario</p>
+            <p>✔ Soporte tecnico dedicado</p>
+            <p>✔ Puedes contratar este plan por pesos $599 al mes</p>
+            <p>✔ Puedes contratar este plan por pesos $6900 al año</p>
+            <a href="carritoempresarial">
+              <button class="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400">
+                ¡Contratar Plan HOY!
+              </button>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+      <section id="purchase-confirmation" class="plans mt-10">
+        <h2 class="text-center text-2xl font-bold mb-6">¿Ya realizaste la compra?</h2>
+        <div class="flex justify-center">
+          <div class="plan text-center bg-gray-100 rounded-lg shadow-lg p-6 w-3/4 md:w-1/2">
+            <i class="fas fa-check-circle fa-3x text-green-600 mb-4"></i>
+            <p class="text-lg mb-4">Si ya compraste un plan, verifica tu cuenta haciendo clic abajo.</p>
+            <a href="/yapagaste">
+              <button class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                Verificar Compra
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-</div>
+  </body>
+</html>

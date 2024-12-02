@@ -1,1 +1,74 @@
-<p>principaladmin works!</p>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Administradores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-gradient-to-br from-green-900 to-green-700 font-sans h-screen flex flex-col items-center justify-center"
+  >
+    <!-- Título del panel -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold text-green-100">Panel de Administración</h1>
+    </div>
+
+    <!-- Contenedor de los botones -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl w-full px-6"
+    >
+      <!-- Botón: Administrar Padres -->
+      <a
+        href="/administrarpadres"
+        class="bg-green-600 text-white py-4 px-6 rounded-lg shadow-lg text-center text-lg font-medium hover:bg-green-800 transform hover:scale-105 transition duration-200 flex items-center justify-center"
+      >
+        <i class="fas fa-users mr-2"></i> Administrar Padres
+      </a>
+
+      <!-- Botón: Administrar Escuelas -->
+      <a
+        href="/administrarescuela"
+        class="bg-green-600 text-white py-4 px-6 rounded-lg shadow-lg text-center text-lg font-medium hover:bg-green-700 transform hover:scale-105 transition duration-200 flex items-center justify-center"
+      >
+        <i class="fas fa-school mr-2"></i> Administrar Escuelas
+      </a>
+
+      <!-- Botón: Ver Gráficas -->
+      <a
+        href="/graficas"
+        class="bg-green-600 text-white py-4 px-6 rounded-lg shadow-lg text-center text-lg font-medium hover:bg-green-700 transform hover:scale-105 transition duration-200 flex items-center justify-center"
+      >
+        <i class="fas fa-chart-bar mr-2"></i> Ver Gráficas
+      </a>
+
+      <!-- Botón: Administrar Alumnos -->
+      <a
+        href="/administraralumno"
+        class="bg-green-600 text-white py-4 px-6 rounded-lg shadow-lg text-center text-lg font-medium hover:bg-green-800 transform hover:scale-105 transition duration-200 flex items-center justify-center"
+      >
+        <i class="fas fa-user-graduate mr-2"></i> Administrar Alumnos
+      </a>
+
+      <!-- Botón: Administrar Administradores -->
+      <a
+        href="/administraradmins"
+        class="bg-green-600 text-white py-4 px-6 rounded-lg shadow-lg text-center text-lg font-medium hover:bg-green-700 transform hover:scale-105 transition duration-200 flex items-center justify-center"
+      >
+        <i class="fas fa-user-shield mr-2"></i> Administrar Administradores
+      </a>
+
+      <!-- Botón: Salir -->
+      <a
+        href="/principal"
+        class="bg-red-700 text-white py-4 px-6 rounded-lg shadow-lg text-center text-lg font-medium hover:bg-red-800 transform hover:scale-105 transition duration-200 flex items-center justify-center"
+      >
+        <i class="fas fa-sign-out-alt mr-2"></i> Salir
+      </a>
+    </div>
+  </body>
+</html>

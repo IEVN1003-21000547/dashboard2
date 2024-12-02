@@ -1,25 +1,25 @@
-<div class="container mx-auto p-6">
+<div class="container mx-auto p-6 bg-gradient-to-br from-green-900 to-green-700 text-white">
   <div class="flex justify-between items-center mb-6">
     <!-- Título de la sección -->
-    <h2 class="text-2xl font-semibold text-gray-800">Plan Individual</h2>
+    <h2 class="text-2xl font-semibold text-green-100">Plan Individual</h2>
   </div>
 
   <!-- Formulario Principal -->
   <div class="flex flex-wrap justify-between">
     <!-- Información a la izquierda -->
-    <div class="w-full md:w-1/2 lg:w-1/3 p-4 bg-gray-100 shadow-md rounded-lg">
-      <p class="text-gray-700 text-lg font-medium">
-        Pagarás una suscripción al <span class="font-semibold">Plan Individual</span> con un costo de <span class="text-blue-600 font-bold">$199</span>.
+    <div class="w-full md:w-1/2 lg:w-1/3 p-4 bg-green-600 shadow-md rounded-lg">
+      <p class="text-lg font-medium">
+        Pagarás una suscripción al <span class="font-semibold">Plan Individual</span> con un costo de <span class="font-bold">$199</span>.
       </p>
     </div>
 
     <!-- Formulario principal a la derecha -->
-    <div class="w-full md:w-1/2 lg:w-1/3 p-4 bg-white shadow-md rounded-lg">
+    <div class="w-full md:w-1/2 lg:w-1/3 p-4 bg-green-600 shadow-md rounded-lg">
       <form [formGroup]="padreForm" (ngSubmit)="onSubmit()">
         <!-- Nombre -->
         <div class="mb-4">
-          <label for="Nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
-          <input id="Nombre" formControlName="Nombre" type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          <label for="Nombre" class="block text-sm font-medium">Nombre</label>
+          <input id="Nombre" formControlName="Nombre" type="text" class="mt-1 p-2 w-full border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500" />
           <div *ngIf="padreForm.get('Nombre')?.invalid && padreForm.get('Nombre')?.touched" class="text-red-500 text-sm mt-1">
             El nombre es obligatorio.
           </div>
@@ -27,8 +27,8 @@
 
         <!-- Correo -->
         <div class="mb-4">
-          <label for="Correo" class="block text-sm font-medium text-gray-700">Correo</label>
-          <input id="Correo" formControlName="Correo" type="email" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          <label for="Correo" class="block text-sm font-medium">Correo</label>
+          <input id="Correo" formControlName="Correo" type="email" class="mt-1 p-2 w-full border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500" />
           <div *ngIf="padreForm.get('Correo')?.invalid && padreForm.get('Correo')?.touched" class="text-red-500 text-sm mt-1">
             El correo es obligatorio y debe ser válido.
           </div>
@@ -36,8 +36,8 @@
 
         <!-- Contraseña -->
         <div class="mb-4">
-          <label for="Contrasena" class="block text-sm font-medium text-gray-700">Contraseña</label>
-          <input id="Contrasena" formControlName="Contrasena" type="password" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          <label for="Contrasena" class="block text-sm font-medium">Contraseña</label>
+          <input id="Contrasena" formControlName="Contrasena" type="password" class="mt-1 p-2 w-full border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500" />
           <div *ngIf="padreForm.get('Contrasena')?.invalid && padreForm.get('Contrasena')?.touched" class="text-red-500 text-sm mt-1">
             La contraseña es obligatoria.
           </div>
@@ -45,8 +45,8 @@
 
         <!-- Método de Pago -->
         <div class="mb-4">
-          <label for="MetodoPago" class="block text-sm font-medium text-gray-700">Método de Pago</label>
-          <select id="MetodoPago" formControlName="MetodoPago" class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+          <label for="MetodoPago" class="block text-sm font-medium">Método de Pago</label>
+          <select id="MetodoPago" formControlName="MetodoPago" class="mt-1 p-2 w-full border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500">
             <option value="Efectivo">Efectivo</option>
             <option value="Tarjeta">Tarjeta</option>
           </select>
@@ -54,8 +54,8 @@
 
         <!-- Fecha de Expiración -->
         <div class="mb-6">
-          <label for="FechaExpiracion" class="block text-sm font-medium text-gray-700">Fecha de Expiración</label>
-          <select id="FechaExpiracion" formControlName="FechaExpiracion" class="mt-1 p-2 w-full border border-gray-300 rounded-md">
+          <label for="FechaExpiracion" class="block text-sm font-medium">Fecha de Expiración</label>
+          <select id="FechaExpiracion" formControlName="FechaExpiracion" class="mt-1 p-2 w-full border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500">
             <option value="Mes">Mes</option>
             <option value="Año">Año</option>
           </select>
@@ -63,7 +63,7 @@
 
         <!-- Botón de Envío -->
         <div class="flex justify-end">
-          <button type="submit" [disabled]="padreForm.invalid" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 disabled:bg-gray-300">
+          <button type="submit" [disabled]="padreForm.invalid" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 disabled:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
             Pagar
           </button>
         </div>
@@ -71,53 +71,61 @@
     </div>
 
     <!-- Campos dinámicos a la derecha -->
-    <div class="w-full md:w-1/2 lg:w-1/3 p-4 bg-white shadow-md rounded-lg">
+    <div class="w-full md:w-1/2 lg:w-1/3 p-4 bg-green-600 shadow-md rounded-lg">
       <h3 class="text-xl font-semibold mb-4">Detalles de Pago</h3>
       <!-- Si el método de pago es efectivo -->
       <div *ngIf="padreForm.get('MetodoPago')?.value === 'Efectivo'">
-        <p class="text-gray-700 mb-2">Ingrese detalles adicionales para pago en efectivo.</p>
+        <p class="mb-2">Ingrese detalles adicionales para pago en efectivo.</p>
         
         <!-- Texto con número de cuenta -->
         <div class="mb-4">
-          <p class="text-gray-600">
-            Realice su depósito a la cuenta: <span class="font-semibold text-blue-600">1234-5678-9012-3456</span>.
+          <p>
+            Realice su depósito a la cuenta: <span class="font-semibold text-yellow-400">1234-5678-9012-3456</span>.
           </p>
         </div>
       
         <!-- Campo para cargar foto del comprobante -->
         <div class="mb-4">
-          <label for="Comprobante" class="block text-sm font-medium text-gray-700">Subir comprobante de pago</label>
+          <label for="Comprobante" class="block text-sm font-medium">Subir comprobante de pago</label>
           <input 
             id="Comprobante" 
             type="file" 
             accept="image/*"
-            class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-50"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-50 text-black focus:outline-none focus:ring-2 focus:ring-green-500"
           />
-          <p class="text-sm text-gray-500 mt-1">Formatos aceptados: JPG, PNG, JPEG.</p>
+          <p class="text-sm mt-1">Formatos aceptados: JPG, PNG, JPEG.</p>
         </div>
       </div>
       
       <!-- Si el método de pago es tarjeta -->
       <div *ngIf="padreForm.get('MetodoPago')?.value === 'Tarjeta'">
-        <p class="text-gray-700 mb-2">Ingrese detalles de su tarjeta.</p>
+        <p class="mb-2">Ingrese detalles de su tarjeta.</p>
         <div class="mb-4">
-          <label for="NumeroTarjeta" class="block text-sm font-medium text-gray-700">Número de Tarjeta</label>
-          <input id="NumeroTarjeta" type="text" formControlName="NumeroTarjeta" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          <label for="NumeroTarjeta" class="block text-sm font-medium">Número de Tarjeta</label>
+          <input id="NumeroTarjeta" type="text" formControlName="NumeroTarjeta" class="mt-1 p-2 w-full border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500" />
         </div>
         <div class="mb-4">
-          <label for="CVC" class="block text-sm font-medium text-gray-700">CVC</label>
-          <input id="CVC" type="text" formControlName="CVC" class="mt-1 p-2 w-full border border-gray-300 rounded-md" />
+          <label for="CVC" class="block text-sm font-medium">CVC</label>
+          <input id="CVC" type="text" formControlName="CVC" class="mt-1 p-2 w-full border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-green-500" />
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal de éxito -->
-  <div *ngIf="pagoExitoso" class="fixed inset-0 flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
-    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
-      <h3 class="text-xl font-semibold text-green-600">Pago realizado con éxito</h3>
-      <p class="mt-2 text-gray-700">¡Tu pago ha sido procesado correctamente!</p>
-      <button (click)="cerrarModal()" class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600">
+  <div 
+    *ngIf="pagoExitoso" 
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+    (click)="cerrarModal()">
+    <div 
+      class="bg-green-600 p-6 rounded-lg shadow-lg text-center" 
+      (click)="$event.stopPropagation()"> <!-- Evitar que el clic dentro del modal lo cierre -->
+      <h3 class="text-xl font-semibold text-white">Pago realizado con éxito</h3>
+      <p class="mt-2">¡Tu pago ha sido procesado correctamente!</p>
+      <p class="mt-2">Descarga la app aquí</p>
+      <button 
+        (click)="cerrarModal()" 
+        class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
         Cerrar
       </button>
     </div>
