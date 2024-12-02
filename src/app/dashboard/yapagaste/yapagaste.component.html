@@ -1,84 +1,92 @@
-<div class="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-900 to-green-700">
-    <div class="w-full max-w-md bg-green-600 shadow-lg rounded-lg p-6 text-white">
-      <!-- Título del formulario -->
-      <h2 class="text-2xl font-bold text-center mb-6">Verificar Pago</h2>
-  
-      <!-- Formulario -->
-      <form (ngSubmit)="verificarDatos()">
-        <!-- Campo: Nombre -->
-        <div class="mb-4">
-          <label for="nombre" class="block text-sm font-medium">Nombre</label>
-          <input
-            type="text"
-            id="nombre"
-            [(ngModel)]="nombre"
-            name="nombre"
-            class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-green-900 shadow-sm focus:ring-green-500 focus:border-green-500"
-            placeholder="Ingrese el nombre"
-            required
-          />
-        </div>
-  
-        <!-- Campo: Correo -->
-        <div class="mb-4">
-          <label for="correo" class="block text-sm font-medium">Correo</label>
-          <input
-            type="email"
-            id="correo"
-            [(ngModel)]="correo"
-            name="correo"
-            class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-green-900 shadow-sm focus:ring-green-500 focus:border-green-500"
-            placeholder="Ingrese el correo"
-            required
-          />
-        </div>
-  
-        <!-- Campo: Contraseña o Número -->
-        <div class="mb-4">
-          <label for="datoEspecifico" class="block text-sm font-medium">Contraseña o Número de Escuela</label>
-          <input
-            type="text"
-            id="datoEspecifico"
-            [(ngModel)]="datoEspecifico"
-            name="datoEspecifico"
-            class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-green-900 shadow-sm focus:ring-green-500 focus:border-green-500"
-            placeholder="Ingrese la contraseña o el número de escuela"
-            required
-          />
-        </div>
-  
-        <!-- Botón: Verificar -->
-        <button
-          type="submit"
-          class="w-full bg-green-700 py-2 px-4 rounded-md shadow-lg hover:bg-green-800 transform hover:scale-105 transition duration-200 focus:outline-none"
-        >
-          Verificar
-        </button>
-      </form>
-    </div>
-  </div>
-  
-  <!-- Modal -->
-  <div
-    *ngIf="mostrarModal"
-    class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50"
-    (click)="cerrarModal()"
-  >
-    <div
-      class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full"
-      (click)="$event.stopPropagation()"
-    >
-      <!-- Título del Modal -->
-      <h3 class="text-lg font-bold text-center mb-4 text-green-900">¡Ya pagaste!</h3>
-      <p class="text-gray-700 text-center mb-6">Puedes usar la app.</p>
-  
-      <!-- Botón: Cerrar -->
+<div class="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-300 to-green-300">
+  <div class="relative w-full max-w-md bg-green-500 shadow-lg rounded-lg p-6 text-white">
+    <!-- Botón Salir -->
+    <a href="/principal">
       <button
-        class="w-full bg-green-700 text-white py-2 px-4 rounded-md shadow-lg hover:bg-green-800 transform hover:scale-105 transition duration-200 focus:outline-none"
-        (click)="cerrarModal()"
+        class="absolute top-2 right-2 bg-red-500 text-white py-2 px-6 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
       >
-        Cerrar
+        Salir
       </button>
-    </div>
+    </a>
+
+    <!-- Título del formulario -->
+    <h2 class="text-2xl font-bold text-center mb-6">Verificar Pago</h2>
+
+    <!-- Formulario -->
+    <form (ngSubmit)="verificarDatos()">
+      <!-- Campo: Nombre -->
+      <div class="mb-4">
+        <label for="nombre" class="block text-sm font-medium">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          [(ngModel)]="nombre"
+          name="nombre"
+          class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-black shadow-sm focus:ring-green-500 focus:border-green-500"
+          placeholder="Ingrese el nombre"
+          required
+        />
+      </div>
+
+      <!-- Campo: Correo -->
+      <div class="mb-4">
+        <label for="correo" class="block text-sm font-medium">Correo</label>
+        <input
+          type="email"
+          id="correo"
+          [(ngModel)]="correo"
+          name="correo"
+          class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-black shadow-sm focus:ring-green-500 focus:border-green-500"
+          placeholder="Ingrese el correo"
+          required
+        />
+      </div>
+
+      <!-- Campo: Contraseña o Número -->
+      <div class="mb-4">
+        <label for="datoEspecifico" class="block text-sm font-medium">Contraseña o Número de Escuela</label>
+        <input
+          type="text"
+          id="datoEspecifico"
+          [(ngModel)]="datoEspecifico"
+          name="datoEspecifico"
+          class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-black shadow-sm focus:ring-green-500 focus:border-green-500"
+          placeholder="Ingrese la contraseña o el número de escuela"
+          required
+        />
+      </div>
+
+      <!-- Botón: Verificar -->
+      <button
+        type="submit"
+        class="w-full bg-green-700 py-2 px-4 rounded-md shadow-lg hover:bg-green-500 transform hover:scale-105 transition duration-200 focus:outline-none"
+      >
+        Verificar
+      </button>
+    </form>
   </div>
-  
+</div>
+
+<!-- Modal -->
+<div
+  *ngIf="mostrarModal"
+  class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50"
+  (click)="cerrarModal()"
+>
+  <div
+    class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full"
+    (click)="$event.stopPropagation()"
+  >
+    <!-- Título del Modal -->
+    <h3 class="text-lg font-bold text-center mb-4 text-green-900">¡Ya pagaste!</h3>
+    <p class="text-gray-700 text-center mb-6">Puedes usar la app.</p>
+
+    <!-- Botón: Cerrar -->
+    <button
+      class="w-full bg-green-700 text-white py-2 px-4 rounded-md shadow-lg hover:bg-green-800 transform hover:scale-105 transition duration-200 focus:outline-none"
+      (click)="cerrarModal()"
+    >
+      Cerrar
+    </button>
+  </div>
+</div>

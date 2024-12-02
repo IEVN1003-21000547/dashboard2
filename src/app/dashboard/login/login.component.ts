@@ -42,7 +42,7 @@ export default class LoginComponent {
           alert('Inicio de sesión exitoso');
           
           // Redirigir a la ruta principal
-          this.router.navigate(['/principal']); // Ruta al componente principal.
+          this.router.navigate(['/principaladmin']); // Ruta al componente principal.
         } else {
           this.errorMessage = response.mensaje || 'Credenciales incorrectas.';
         }

@@ -1,13 +1,14 @@
-<div class="p-4">
-  <h2 class="text-2xl font-bold mb-4">Administrar Padres</h2>
+<app-navbar></app-navbar>
+
+<div class="p-4 bg-green-100 min-h-screen">
+  <h2 class="text-2xl font-bold mb-4 text-center text-green-700">Administrar Padres</h2>
 
   <!-- Formulario para modificar -->
-  <!-- Formulario para modificar -->
-<div *ngIf="editando" class="bg-gray-100 p-4 mb-4 rounded shadow">
-    <h3 class="text-lg font-semibold mb-2">Editar Padre</h3>
+  <div *ngIf="editando" class="bg-white p-6 mb-6 rounded-lg shadow-lg border-2 border-green-300">
+    <h3 class="text-lg font-semibold mb-2 text-green-700">Editar Padre</h3>
     <form (ngSubmit)="guardarPadre()">
       <div class="mb-4">
-        <label for="idPadre" class="block text-sm font-medium">ID del Padre</label>
+        <label for="idPadre" class="block text-sm font-medium text-gray-700">ID del Padre</label>
         <input
           id="idPadre"
           [(ngModel)]="padreActual.IdPadre"
@@ -18,9 +19,9 @@
           [readonly]="editando"
         />
       </div>
-  
+
       <div class="mb-4">
-        <label for="nombre" class="block text-sm font-medium">Nombre</label>
+        <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
         <input
           id="nombre"
           [(ngModel)]="padreActual.Nombre"
@@ -29,7 +30,7 @@
         />
       </div>
       <div class="mb-4">
-        <label for="correo" class="block text-sm font-medium">Correo</label>
+        <label for="correo" class="block text-sm font-medium text-gray-700">Correo</label>
         <input
           id="correo"
           [(ngModel)]="padreActual.Correo"
@@ -38,7 +39,7 @@
         />
       </div>
       <div class="mb-4">
-        <label for="metodoPago" class="block text-sm font-medium">Método de Pago</label>
+        <label for="metodoPago" class="block text-sm font-medium text-gray-700">Método de Pago</label>
         <select
           id="metodoPago"
           [(ngModel)]="padreActual.MetodoPago"
@@ -50,7 +51,7 @@
         </select>
       </div>
       <div class="mb-4">
-        <label for="fechaExpiracion" class="block text-sm font-medium">Fecha Expiración</label>
+        <label for="fechaExpiracion" class="block text-sm font-medium text-gray-700">Fecha Expiración</label>
         <select
           id="fechaExpiracion"
           [(ngModel)]="padreActual.FechaExpiracion"
@@ -64,14 +65,13 @@
       <div class="flex gap-4">
         <button
           type="submit"
-          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
         >
           Guardar
         </button>
       </div>
     </form>
   </div>
-  
 
   <!-- Mostrar indicador de carga -->
   <div *ngIf="cargando" class="text-center text-gray-600">Cargando...</div>
@@ -81,18 +81,18 @@
 
   <!-- Tabla de padres -->
   <table *ngIf="!cargando && !error && padres.length > 0" class="table-auto w-full border-collapse border border-gray-300">
-    <thead>
-      <tr class="bg-gray-200">
-        <th class="border border-gray-300 px-4 py-2">ID</th>
-        <th class="border border-gray-300 px-4 py-2">Nombre</th>
-        <th class="border border-gray-300 px-4 py-2">Correo</th>
-        <th class="border border-gray-300 px-4 py-2">Método de Pago</th>
-        <th class="border border-gray-300 px-4 py-2">Fecha Expiración</th>
-        <th class="border border-gray-300 px-4 py-2">Acciones</th>
+    <thead class="bg-green-200">
+      <tr>
+        <th class="border border-gray-300 px-4 py-2 text-green-700">ID</th>
+        <th class="border border-gray-300 px-4 py-2 text-green-700">Nombre</th>
+        <th class="border border-gray-300 px-4 py-2 text-green-700">Correo</th>
+        <th class="border border-gray-300 px-4 py-2 text-green-700">Método de Pago</th>
+        <th class="border border-gray-300 px-4 py-2 text-green-700">Fecha Expiración</th>
+        <th class="border border-gray-300 px-4 py-2 text-green-700">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let padre of padres" class="hover:bg-gray-100">
+      <tr *ngFor="let padre of padres" class="hover:bg-green-50">
         <td class="border border-gray-300 px-4 py-2">{{ padre.IdPadre }}</td>
         <td class="border border-gray-300 px-4 py-2">{{ padre.Nombre }}</td>
         <td class="border border-gray-300 px-4 py-2">{{ padre.Correo }}</td>

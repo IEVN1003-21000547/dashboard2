@@ -14,7 +14,7 @@ export default class YapagasteComponent {
   nombre: string = '';
   correo: string = '';
   datoEspecifico: string = '';
-  mostrarModal: boolean = false; // Estado del modal
+  mostrarModal: boolean = false;
 
   constructor(private adminService: AdministracionService) {}
 
@@ -25,8 +25,9 @@ export default class YapagasteComponent {
         if (respuesta.exito) {
           this.abrirModal();
         } else {
-          const credencialesEscuela = { Correo: this.correo, Contrasena: this.datoEspecifico };
-          this.adminService.loginAdministrador(credencialesEscuela).subscribe({
+          // Verificar la escuela
+          const datosEscuela = { Nombre: this.nombre, Correo: this.correo, NumeroEscuela: this.datoEspecifico };
+          this.adminService.verificarEscuela(datosEscuela).subscribe({
             next: (respuestaEscuela) => {
               if (respuestaEscuela.exito) {
                 this.abrirModal();
@@ -45,6 +46,7 @@ export default class YapagasteComponent {
       },
     });
   }
+  
 
   abrirModal() {
     this.mostrarModal = true;

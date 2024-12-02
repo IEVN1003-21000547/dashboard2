@@ -1,55 +1,80 @@
-<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-900 to-green-700">
-  <form 
-    [formGroup]="loginForm" 
-    (ngSubmit)="onLogin()" 
-    class="bg-green-600 p-8 rounded-lg shadow-lg w-96 text-white"
-  >
-    <!-- Título -->
-    <h2 class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
-
-    <!-- Campo: Correo -->
-    <div class="mb-4">
-      <label for="Correo" class="block text-sm font-medium">Correo</label>
-      <input 
-        id="Correo" 
-        type="email" 
-        formControlName="Correo"
-        class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-green-900 shadow-sm focus:ring-green-500 focus:border-green-500"
-        [ngClass]="{'border-red-500': loginForm.get('Correo')?.invalid && loginForm.get('Correo')?.touched}"
-        placeholder="Ingrese su correo"
-        required
-      />
-    </div>
-
-    <!-- Campo: Contraseña -->
-    <div class="mb-4">
-      <label for="Contrasena" class="block text-sm font-medium">Contraseña</label>
-      <input 
-        id="Contrasena" 
-        type="password" 
-        formControlName="Contrasena"
-        class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-green-900 shadow-sm focus:ring-green-500 focus:border-green-500"
-        [ngClass]="{'border-red-500': loginForm.get('Contrasena')?.invalid && loginForm.get('Contrasena')?.touched}"
-        placeholder="Ingrese su contraseña"
-        required
-      />
-    </div>
-
-    <!-- Botón: Iniciar Sesión -->
-    <button 
-      type="submit" 
-      class="w-full bg-green-700 py-2 px-4 rounded-md shadow-lg hover:bg-green-800 transform hover:scale-105 transition duration-200 focus:outline-none"
-      [disabled]="loginForm.invalid"
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-400 to-green-400">
+  <div class="relative">
+    <!-- Botón: Salir -->
+    <a href="/principal">
+      <button 
+        class="absolute top-0 right-0 bg-red-500 text-white py-2 px-6 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 z-10"
+      >
+        Salir X
+      </button>
+    </a>
+    
+    <!-- Formulario -->
+    <form 
+      [formGroup]="loginForm" 
+      (ngSubmit)="onLogin()" 
+      class="bg-green-500 p-8 rounded-lg shadow-lg w-96 text-white relative"
     >
-      Iniciar Sesión
-    </button>
+      <!-- Título -->
+      <h2 class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
 
-    <!-- Mensaje de Error -->
-    <p 
-      class="text-red-500 text-sm mt-4 text-center"
-      *ngIf="errorMessage"
-    >
-      {{ errorMessage }}
-    </p>
-  </form>
+      <!-- Campo: Correo -->
+      <div class="mb-4">
+        <label for="Correo" class="block text-sm font-medium">Correo</label>
+        <input 
+          id="Correo" 
+          type="email" 
+          formControlName="Correo"
+          class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-green-400 shadow-sm focus:ring-green-500 focus:border-green-500"
+          [ngClass]="{'border-red-500': loginForm.get('Correo')?.invalid && loginForm.get('Correo')?.touched}"
+          placeholder="Ingrese su correo"
+          required
+        />
+      </div>
+
+      <!-- Campo: Contraseña -->
+      <div class="mb-4">
+        <label for="Contrasena" class="block text-sm font-medium">Contraseña</label>
+        <input 
+          id="Contrasena" 
+          type="password" 
+          formControlName="Contrasena"
+          class="mt-1 block w-full rounded-md border-2 border-green-400 bg-green-100 text-green-900 shadow-sm focus:ring-green-500 focus:border-green-500"
+          [ngClass]="{'border-red-500': loginForm.get('Contrasena')?.invalid && loginForm.get('Contrasena')?.touched}"
+          placeholder="Ingrese su contraseña"
+          required
+        />
+      </div>
+
+      <!-- Botón: Iniciar Sesión -->
+      <button 
+        type="submit" 
+        class="w-full bg-green-700 py-2 px-4 rounded-md shadow-lg hover:bg-green-500 transform hover:scale-105 transition duration-200 focus:outline-none"
+        [disabled]="loginForm.invalid"
+      >
+        Iniciar Sesión
+      </button>
+
+      <hr>
+
+      <!-- Botón: Agregar Administrador -->
+      <a href="/agregaradmin" class="w-full mt-4">
+        <button 
+          type="button"
+          class="w-full bg-green-700 py-2 px-4 rounded-md text-white shadow-lg hover:bg-green-500 transform hover:scale-105 transition duration-200 focus:outline-none"
+        >
+          Agregar Administrador
+        </button>
+      </a>
+      
+
+      <!-- Mensaje de Error -->
+      <p 
+        class="text-white-500 text-sm mt-4 text-center"
+        *ngIf="errorMessage"
+      >
+        {{ errorMessage }}
+      </p>
+    </form>
+  </div>
 </div>

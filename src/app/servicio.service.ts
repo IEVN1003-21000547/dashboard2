@@ -57,6 +57,13 @@ export class AdministracionService {
     return this.http.delete(`${this.baseUrl}/escuelas/${id}`);
   }
 
+  public verificarEscuela(datos: { Nombre: string; Correo: string; NumeroEscuela: string }): Observable<{ mensaje: string; exito: boolean; escuela?: Escuela }> {
+    return this.http.post<{ mensaje: string; exito: boolean; escuela?: Escuela }>(
+      `${this.baseUrl}/escuelas/verificar`,
+      datos
+    );
+  }     
+
   // ----- Alumnos -----
   public obtenerAlumnos(): Observable<Alumno[]> {
     return this.http.get<{ alumnos: Alumno[] }>(`${this.baseUrl}/alumnos`).pipe(

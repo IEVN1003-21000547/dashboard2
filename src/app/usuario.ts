@@ -1,4 +1,3 @@
-// Modelos para las tablas
 export interface Administrador {
   IdAdministrador?: number;
   Nombre: string;

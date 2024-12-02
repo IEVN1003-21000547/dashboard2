@@ -13,6 +13,8 @@ import CarritoempresarialComponent from './dashboard/carritoempresarial/carritoe
 import YapagasteComponent from './dashboard/yapagaste/yapagaste.component';
 import GraficasComponent  from './dashboard/graficas/graficas.component';
 import PrincipaladminComponent from './dashboard/principaladmin/principaladmin.component';
+import AgregaraadminComponent from './dashboard/agregaraadmin/agregaraadmin.component';
+import Agregaraadmin2Component from './dashboard/agregaraadmin2/agregaraadmin2.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,8 @@ import PrincipaladminComponent from './dashboard/principaladmin/principaladmin.c
   imports: [RouterOutlet, NavbarComponent,PrincipalComponent,LoginComponent, 
     AdministraralumnoComponent, AdministrarescuelaComponent, AdministrarpadresComponent, 
     AdministraradminsComponent,AgregaralumnoComponent, CarritoindividualComponent, 
-    CarritoempresarialComponent, YapagasteComponent, GraficasComponent, PrincipaladminComponent],
+    CarritoempresarialComponent, YapagasteComponent, GraficasComponent, PrincipaladminComponent, 
+    AgregaraadminComponent, Agregaraadmin2Component],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

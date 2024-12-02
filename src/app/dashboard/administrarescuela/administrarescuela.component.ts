@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AdministracionService } from '../../servicio.service';
 import { Escuela } from '../../usuario';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-administrarescuela',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NavbarComponent],
   templateUrl: './administrarescuela.component.html',
   styles: []
 })

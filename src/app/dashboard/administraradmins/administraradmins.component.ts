@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AdministracionService } from '../../servicio.service';
 import { Administrador } from '../../usuario';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-administraradmins',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NavbarComponent],
   templateUrl: './administraradmins.component.html',
   styles: []
 })

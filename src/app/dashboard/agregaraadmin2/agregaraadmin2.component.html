@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+
+<div class="min-h-screen flex items-center justify-center bg-green-200">
+    <div class="container max-w-sm p-6 bg-green-300 text-gray-800 shadow-lg rounded-lg relative">
+      <!-- Botón de redirección a /principal -->
+      <a href="/principal" class="absolute top-4 right-4">
+        <button class="px-4 py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+          Salir
+        </button>
+      </a>
+  
+      <h2 class="text-2xl font-bold text-center mb-6">Agregar Administrador</h2>
+      <form [formGroup]="adminForm" (ngSubmit)="agregarAdministrador()" class="space-y-4">
+        <!-- Campo Nombre -->
+        <div class="max-w-sm mx-auto">
+          <label for="Nombre" class="block text-sm font-medium">Nombre</label>
+          <input
+            id="Nombre"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            formControlName="Nombre"
+            placeholder="Nombre del administrador"
+          />
+          <small *ngIf="adminForm.get('Nombre')?.invalid && adminForm.get('Nombre')?.touched" class="text-red-500 text-sm mt-1">
+            Nombre es requerido y debe tener al menos 3 caracteres.
+          </small>
+        </div>
+  
+        <!-- Campo Correo -->
+        <div class="max-w-sm mx-auto">
+          <label for="Correo" class="block text-sm font-medium">Correo</label>
+          <input
+            id="Correo"
+            type="email"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            formControlName="Correo"
+            placeholder="Correo electrónico"
+          />
+          <small *ngIf="adminForm.get('Correo')?.invalid && adminForm.get('Correo')?.touched" class="text-red-500 text-sm mt-1">
+            Proporcione un correo válido.
+          </small>
+        </div>
+  
+        <!-- Campo Contraseña -->
+        <div class="max-w-sm mx-auto">
+          <label for="Contrasena" class="block text-sm font-medium">Contraseña</label>
+          <input
+            id="Contrasena"
+            type="password"
+            class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            formControlName="Contrasena"
+            placeholder="Contraseña"
+          />
+          <small *ngIf="adminForm.get('Contrasena')?.invalid && adminForm.get('Contrasena')?.touched" class="text-red-500 text-sm mt-1">
+            Contraseña es requerida y debe tener al menos 6 caracteres.
+          </small>
+        </div>
+  
+        <!-- Botón Agregar -->
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 disabled:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+          >
+            Agregar
+          </button>
+        </div>
+      </form>
+  
+      <!-- Botón Iniciar Sesión justo debajo del botón Agregar -->
+      <div class="flex justify-center mt-4">
+        <a href="/login">
+          <button
+            type="button"
+            class="px-4 py-2 bg-green-600 text-white font-semibold rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+          >
+            Iniciar Sesión
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  

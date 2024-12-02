@@ -12,6 +12,9 @@ import YapagasteComponent from './dashboard/yapagaste/yapagaste.component';
 import GraficasComponent from './dashboard/graficas/graficas.component';
 import  PrincipaladminComponent  from './dashboard/principaladmin/principaladmin.component';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
+import AgregaraadminComponent from './dashboard/agregaraadmin/agregaraadmin.component';
+import Agregaraadmin2Component from './dashboard/agregaraadmin2/agregaraadmin2.component';
+
 
 export const routes: Routes = [
   { path: '', redirectTo: '/principal', pathMatch: 'full' },
@@ -28,5 +31,7 @@ export const routes: Routes = [
   { path: 'carritoempresarial', component: CarritoempresarialComponent},
   { path: 'yapagaste', component: YapagasteComponent},
   { path: 'graficas', component: GraficasComponent},
+  { path: 'agregaradmin', component: AgregaraadminComponent},
+  { path: 'agregaradmin2', component: Agregaraadmin2Component},
   // { path: '', component: },
 ];

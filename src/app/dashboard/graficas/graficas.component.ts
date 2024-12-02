@@ -1,13 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
 import { AdministracionService } from '../../servicio.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-graficas',
   standalone: true,
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './graficas.component.html',
   styles: ``,
 })
