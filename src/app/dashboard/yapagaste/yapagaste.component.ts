@@ -36,13 +36,13 @@ export default class YapagasteComponent {
               }
             },
             error: () => {
-              alert('Error al verificar los datos de la escuela.');
+              alert('Error al verificar los datos.');
             },
           });
         }
       },
       error: () => {
-        alert('Error al verificar los datos del padre.');
+        alert('Error al verificar los datos.');
       },
     });
   }

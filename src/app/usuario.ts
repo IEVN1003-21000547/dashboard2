@@ -14,7 +14,7 @@ export interface Escuela {
   NumeroEscuela: string;
   MetodoPago: 'Efectivo' | 'Tarjeta';
   CantidadLicencias: number;
-  FechaExpiracion: 'Mes' | 'Año';
+  FechaExpiracion: 'Mes' | 'Año' | 'Vencido';
 }
 
 export interface Alumno {
@@ -30,5 +30,5 @@ export interface Padre {
   Correo: string;
   Contrasena?: string;
   MetodoPago: 'Efectivo' | 'Tarjeta';
-  FechaExpiracion: 'Mes' | 'Año';
+  FechaExpiracion: 'Mes' | 'Año' | 'Vencido';
 }
