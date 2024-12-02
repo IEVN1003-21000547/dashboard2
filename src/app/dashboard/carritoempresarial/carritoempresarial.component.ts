@@ -4,16 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdministracionService } from '../../servicio.service'; // Asegúrate de que esta ruta sea correcta
 import { Escuela } from '../../usuario'; // Asegúrate de que esta ruta sea correcta
 import { CommonModule } from '@angular/common';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-carritoempresarial',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './carritoempresarial.component.html',
-  styles: ``
+  styles: []
 })
 export default class CarritoempresarialComponent implements OnInit {
   escuelaForm!: FormGroup;
+  pagoExitoso = false;  // Variable para controlar la visibilidad del modal de éxito
+  comprobantePago: any = null; // Variable para almacenar el archivo cargado del comprobante
 
   constructor(
     private fb: FormBuilder,
@@ -30,15 +33,25 @@ export default class CarritoempresarialComponent implements OnInit {
       MetodoPago: ['Efectivo', [Validators.required]],
       CantidadLicencias: ['', [Validators.required, Validators.min(1)]],
       FechaExpiracion: ['Mes', [Validators.required]],
+      NumeroTarjeta: ['', []], 
+      CVC: ['', []],
+      Comprobante: [null, []]
     });
   }
 
+  // Método para cerrar el modal de éxito
+  cerrarModal(): void {
+    this.pagoExitoso = false;
+  }
+
+  // Método para enviar el formulario
   onSubmit(): void {
     if (this.escuelaForm.valid) {
       const nuevaEscuela: Escuela = this.escuelaForm.value;
+
       this.adminService.agregarEscuela(nuevaEscuela).subscribe({
         next: (res) => {
-          alert('Escuela agregada exitosamente');
+          this.pagoExitoso = true;  // Activar el modal de éxito
           this.escuelaForm.reset();
         },
         error: (err) => {

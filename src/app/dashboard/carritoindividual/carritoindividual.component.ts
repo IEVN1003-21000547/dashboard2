@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export default class CarritoindividualComponent implements OnInit {
   padreForm!: FormGroup;
+  pagoExitoso: boolean = false;  // Variable para controlar el estado del modal
 
   constructor(
     private fb: FormBuilder,
@@ -35,8 +36,11 @@ export default class CarritoindividualComponent implements OnInit {
       const nuevoPadre: Padre = this.padreForm.value;  // Usamos la interfaz Padre
       this.adminService.agregarPadre(nuevoPadre).subscribe({
         next: (res) => {
-          alert('Padre agregado exitosamente');
-          this.padreForm.reset();  // Reseteamos el formulario después de enviar
+          this.pagoExitoso = true;  // Mostrar modal de éxito
+          setTimeout(() => {
+            this.pagoExitoso = false;  // Cerrar el modal después de 3 segundos
+            this.padreForm.reset();  // Reseteamos el formulario después de enviar
+          }, 3000);
         },
         error: (err) => {
           alert('Hubo un error al agregar al padre');
@@ -46,5 +50,9 @@ export default class CarritoindividualComponent implements OnInit {
     } else {
       alert('Por favor, llena todos los campos correctamente.');
     }
+  }
+
+  cerrarModal() {
+    this.pagoExitoso = false;
   }
 }
