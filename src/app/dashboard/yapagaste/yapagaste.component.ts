@@ -20,28 +20,40 @@ export default class YapagasteComponent {
 
   verificarDatos() {
     const credencialesPadre = { Correo: this.correo, Contrasena: this.datoEspecifico };
+  
     this.adminService.loginPadre(credencialesPadre).subscribe({
       next: (respuesta) => {
+        console.log('Respuesta Padre:', respuesta); // <-- Depuración
         if (respuesta.exito) {
-          this.abrirModal();
+          if (respuesta.padre?.FechaExpiracion === 'Vencido') {
+            alert('Necesitas pagar primero.');
+          } else {
+            this.abrirModal();
+          }
         } else {
-          // Verificar la escuela
           const datosEscuela = { Nombre: this.nombre, Correo: this.correo, NumeroEscuela: this.datoEspecifico };
           this.adminService.verificarEscuela(datosEscuela).subscribe({
             next: (respuestaEscuela) => {
+              console.log('Respuesta Escuela:', respuestaEscuela);
               if (respuestaEscuela.exito) {
-                this.abrirModal();
+                if (respuestaEscuela.escuela?.FechaExpiracion === 'Vencido') {
+                  alert('Necesitas pagar primero.');
+                } else {
+                  this.abrirModal();
+                }
               } else {
                 alert('No se encontraron coincidencias.');
               }
             },
-            error: () => {
+            error: (err) => {
+              console.error('Error al verificar escuela:', err);
               alert('Error al verificar los datos.');
             },
           });
         }
       },
-      error: () => {
+      error: (err) => {
+        console.error('Error al verificar padre:', err);
         alert('Error al verificar los datos.');
       },
     });
